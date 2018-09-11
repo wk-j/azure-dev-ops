@@ -13,5 +13,7 @@ steps:
 - script: dotnet  build src/AzureDevOps --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet publish src/AzureDevOps --configuration $(buildConfiguration)
+- script: dotnet publish src/AzureDevOps --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
   displayName: 'dotnet publish $(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
